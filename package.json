@@ -1,5 +1,5 @@
 {
-  "name": "@theui/svelte",
+  "name": "@theui/sveltekit-components",
   "version": "1.0.0-beta.1",
   "description": "This is an official component library of The UI for Sveltekit. The components designed on the top of TailwindCSS with custom theming. The components are accessible out of the box.",
   "author": {
@@ -8,9 +8,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/theui-dev/svelte.git"
+    "url": "https://github.com/theui-dev/sveltekit-components.git"
   },
-  "homepage": "https://www.theui.dev/components/svelte",
+  "homepage": "https://www.theui.dev/components/sveltekit",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",

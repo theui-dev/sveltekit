@@ -3,7 +3,7 @@
 ## Kickstart your development with the Sveltekit Components library, a tool of the **Sveltekit ecosystem** by TheUI. It includes the power of Sveltekit and TailwindCSS to speed up your development. So, build fast, deliver faster.
 <br>
 
-The **@theui/sveltekit-components** is an official component library of [**TheUI**](https://www.theui.xyz) for **Sveltekit**, designed on the top of TailwindCSS. The components are highly accessible and customizable out of the box.
+The **@theui/sveltekit-components** is an official component library of [**TheUI**](https://www.theui.dev) for **Sveltekit**, designed on the top of TailwindCSS. The components are highly accessible and customizable out of the box.
 
 It includes the power of SvelteKit and the features of the TailwindCSS together to make an awesome tool that speedup your development process.
 
@@ -231,7 +231,7 @@ Please let us know before starting work on any new features or bug. If you're in
 <br>
 
 # **Copyright and license**
-Code and documentation copyright 2022 the [M B Parvez](https://www.mbparvez.me), [Gosoft](https://www.gosoft.io) and [TheUI](https://www.theui.xyz).
+Code and documentation copyright 2022 the [M B Parvez](https://www.mbparvez.me), [Gosoft](https://www.gosoft.io) and [TheUI](https://www.theui.dev).
 
 ### **Copyright 2022 TheUI**
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
