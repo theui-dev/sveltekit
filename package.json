@@ -1,0 +1,77 @@
+{
+  "name": "@theui/svelte",
+  "version": "1.0.0-beta.1",
+  "description": "This is an official component library of The UI for Sveltekit. The components designed on the top of TailwindCSS with custom theming. The components are accessible out of the box.",
+  "author": {
+    "name": "M B Parvez",
+    "url": "https://www.mbparvez.me"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theui-dev/svelte.git"
+  },
+  "homepage": "https://www.theui.dev/components/svelte",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "package": "svelte-kit package",
+    "preview": "vite preview",
+    "test": "playwright test",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "next",
+    "@sveltejs/kit": "next",
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "postcss-load-config": "^4.0.1",
+    "svelte": "^3.44.0",
+    "svelte-check": "^2.7.1",
+    "svelte-preprocess": "^4.10.6",
+    "tailwindcss": "^3.1.2",
+    "tslib": "^2.3.1",
+    "typescript": "^4.7.4",
+		"vite": "^3.0.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "@theui/core": "^0.23.0",
+    "@tiptap/core": "^2.0.0-beta.182",
+    "@tiptap/extension-placeholder": "^2.0.0-beta.53",
+    "@tiptap/extension-underline": "^2.0.0-beta.25",
+    "@tiptap/starter-kit": "^2.0.0-beta.191",
+    "svelte2tsx": "^0.5.13"
+  },
+  "keywords": [
+    "sveltekit-components",
+    "svelte",
+    "sveltekit",
+    "components",
+    "tailwindcss",
+    "theui",
+    "mbparvez",
+    "ui",
+    "accordion",
+    "alert",
+    "badges",
+    "breadcrumbs",
+    "buttons",
+    "buttons-groups",
+    "collapses",
+    "container",
+    "darkmode",
+    "dropdown",
+    "Entry pop-up",
+    "Exit pop-up",
+    "forms",
+    "icons",
+    "modals",
+    "navbar",
+    "notifications",
+    "offcanvas",
+    "progress",
+    "tabs",
+    "tooltips"
+  ]
+}

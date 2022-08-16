@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"name": "flowbite",
+			"path": "..\\..\\flowbite"
+		},
+		{
+			"name": "scrp",
+			"path": "..\\..\\scrp"
+		},
+		{
+			"name": "core",
+			"path": "..\\core"
+		},
+		{
+			"name": "components",
+			"path": "."
+		},
+		{
+			"path": "..\\site"
+		}
+	],
+	"settings": {}
+}
