@@ -1,6 +1,6 @@
 {
   "name": "@theui/sveltekit-components",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.3",
   "description": "This is an official component library of The UI for Sveltekit. The components designed on the top of TailwindCSS with custom theming. The components are accessible out of the box.",
   "author": {
     "name": "M B Parvez",
