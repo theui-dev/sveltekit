@@ -3,7 +3,7 @@
 <div style="text-align:center;font-size:2rem">A tool of the <b>Sveltekit ecosystem</b></div>
 
 <div style="text-align:center">
-  <img src="./static/banner.svg" style="max-width:400px">
+  <img src="https://theui-beta.vercel.app/img/theui-sveltekit-components.svg" style="max-width:400px">
 </div>
 
 The **@theui/sveltekit-components** is an official component library of [**TheUI**](https://www.theui.dev) for **Sveltekit**, designed on the top of TailwindCSS. It includes the power of SvelteKit and the features of the TailwindCSS together to make an awesome tool that speedup your development process.
