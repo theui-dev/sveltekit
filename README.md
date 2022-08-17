@@ -1,9 +1,10 @@
-<h1 align="center"> TheUI Sveltekit Components
+<h1 align="center"> TheUI Sveltekit Components</h1>
+<div align="center">
 
 [![npm version](https://badgen.net/npm/v/@theui/sveltekit-components?color=red)](https://www.npmjs.com/package/@theui/sveltekit-components)
 [![npm downloads](https://badgen.net/npm/dt/@theui/sveltekit-components)](https://www.npmjs.com/package/@theui/sveltekit-components)
 [![license](https://badgen.net/npm/license/flowbite-svelte)](https://github.com/themesberg/flowbite-svelte/blob/main/LICENSE)
-</h1>
+</div>
 
 <h2 align="center">A tool of the <b>Sveltekit ecosystem</b></h2>
 
