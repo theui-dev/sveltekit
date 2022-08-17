@@ -1,21 +1,21 @@
-<h1 style="text-align:center;font-size:3rem;font-weight:bold"> TheUI Sveltekit Components
+<h1 align="center"> TheUI Sveltekit Components
 
 [![npm version](https://badgen.net/npm/v/@theui/sveltekit-components?color=red)](https://www.npmjs.com/package/@theui/sveltekit-components)
 [![npm downloads](https://badgen.net/npm/dt/@theui/sveltekit-components)](https://www.npmjs.com/package/@theui/sveltekit-components)
 [![license](https://badgen.net/npm/license/flowbite-svelte)](https://github.com/themesberg/flowbite-svelte/blob/main/LICENSE)
 </h1>
 
-<div style="text-align:center;font-size:2rem">A tool of the <b>Sveltekit ecosystem</b></div>
+<h2 align="center">A tool of the <b>Sveltekit ecosystem</b></h2>
 
-<div style="text-align:center">
-  <img src="https://theui-beta.vercel.app/img/theui-sveltekit-components.svg" style="max-width:400px">
+<div align="center">
+  <img src="https://theui-beta.vercel.app/img/theui-sveltekit-components.svg" width="400px">
 </div>
 
 The **@theui/sveltekit-components** is an official component library of [**TheUI**](https://www.theui.dev) for **Sveltekit**, designed on the top of TailwindCSS. It includes the power of SvelteKit and the features of the TailwindCSS together to make an awesome tool that speedup your development process.
 
 <br>
 
-<h2 style="font-size:2rem;font-weight:bold">Features</h2>
+## **Features**
 
  * Accessible components
  * Dark/light mode control
@@ -26,11 +26,9 @@ The **@theui/sveltekit-components** is an official component library of [**TheUI
 
 <br>
 
-<h2 style="font-size:2rem;font-weight:bold">Components</h2>
+## **Components**
 
-<ul>
-  <li style="margin-bottom:1rem">
-  <b style="font-size:1.25rem">General Components</b>
+* General Components
 
   * Accordion
   * Alert
@@ -51,10 +49,10 @@ The **@theui/sveltekit-components** is an official component library of [**TheUI
   * Tabs and pills
   * Table
   * Tooltip
-  </li>
-  <li>
-  <b style="font-size:1.25rem">Form Components</b>
 
+<br>
+
+* Form Components
   * Form input
   * Check-box
   * Input group
@@ -68,7 +66,7 @@ The **@theui/sveltekit-components** is an official component library of [**TheUI
 
 <br>
 
-<h2 style="font-size:2rem;font-weight:bold">Installation Guide</h2>
+## **Installation Guide**
 
 Install the Sveltekit Components library in your project or start a new project with the boilerplate template. Install it anyhow and build fast, deliver faster.
 
@@ -79,7 +77,7 @@ Follow any of the two methods to install the component library.
 
 <br>
 
-<h3 style="font-size:1.5rem;font-weight:bold">1. Use Boilerplate From Github</h3>
+### **1. Use Boilerplate From Github**
 
 Open your terminal and run the following command to install the boilerplate template. Replace the **project-name** with your desired project name.
 
@@ -96,75 +94,75 @@ npm run dev
 
 <br>
 
-<h3 style="font-size:1.5rem;font-weight:bold">2.&nbsp;&nbsp; Manually Install From Scratch</h3>
+### **2.&nbsp;&nbsp; Manually Install From Scratch**
 
 To install the component library manually, please follow the steps one by one given below.
 
-<div style="padding-left:1rem">
-  <h3 style="font-size:1.5rem;font-weight:bold">2.1&nbsp;&nbsp; Install Svelte/Sveltekit</h3>
+### **2.1&nbsp;&nbsp; Install Svelte/Sveltekit**
 
-  ```bash
-  npm create svelte@latest my-app
-  cd my-app
+```bash
+npm create svelte@latest my-app
+cd my-app
 
-  # Add Tailwind CSS to the application
-  npx svelte-add@latest tailwindcss
+# Add Tailwind CSS to the application
+npx svelte-add@latest tailwindcss
 
-  # Install node modules
-  npm install
+# Install node modules
+npm install
 
-  # Install TheUI Sveltekit Component 
-  npm i @theui/sveltekit-components
-  ```
+# Install TheUI Sveltekit Component 
+npm i @theui/sveltekit-components
+```
 
-  <br>
-  <h3 style="font-size:1.5rem;font-weight:bold">2.2&nbsp;&nbsp; Add TheUI Components library</h3>
+<br>
 
-  ```bash
-  npm i @theui/sveltekit-components
-  ```
+### **2.2&nbsp;&nbsp; Add TheUI Components library**
 
-  <br>
-  <h3 style="font-size:1.5rem;font-weight:bold">2.3&nbsp;&nbsp; Configuration</h3>
+```bash
+npm i @theui/sveltekit-components
+```
 
-  Open TailwindCSS configuration file `tailwind.config.cjs` and update it with the following code.
+<br>
 
-  ```js
-  // 1. Update config.content
-  // 2. Add config.presets
-  const config = {
-    content: [
-      "./src/**/*.{html,js,svelte,ts}",
-      "./node_modules/@theui/sveltekit-components/**/*.{html,js,svelte,ts}", // New line
-    ],
-    presets: [require("@theui/core/preset.cjs")], // New line
-    darkMode: 'class',
-    theme: {
-      extend: {},
-    },
+### **2.3&nbsp;&nbsp; Configuration**
 
-    plugins: [],
-  };
+Open TailwindCSS configuration file `tailwind.config.cjs` and update it with the following code.
 
-  module.exports = config;
-  ```
+```js
+// 1. Update config.content
+// 2. Add config.presets
+const config = {
+  content: [
+    "./src/**/*.{html,js,svelte,ts}",
+    "./node_modules/@theui/sveltekit-components/**/*.{html,js,svelte,ts}", // New line
+  ],
+  presets: [require("@theui/core/preset.cjs")], // New line
+  darkMode: 'class',
+  theme: {
+    extend: {},
+  },
 
-  Open `__layout.svelte` and import the core style file `style.postcss` inside the `<script>` tag. It is required for the custom color classes to work properly.
-  
-  ```html
-  <script>
-    import '../../node_modules/@theui/core/style.postcss' // Add this line inside script tag
-    import "../app.css"
-  </script>
-  ```
-</div>
+  plugins: [],
+};
+
+module.exports = config;
+```
+
+Open `__layout.svelte` and import the core style file `style.postcss` inside the `<script>` tag. It is required for the custom color classes to work properly.
+
+```html
+<script>
+  import '../../node_modules/@theui/core/style.postcss' // Add this line inside script tag
+  import "../app.css"
+</script>
+```
 
 And thats all. You are ready to start your awesome project now.
 
 <br>
 <br>
 
-<h2 style="font-size:2rem;font-weight:bold">Colors and Branding</h2>
+## **Colors and Branding**
 
 Sveltekit has been developed based on the TailwindCSS, a powerful tool that can generate almost any CSS style and unlimited (available) colors for your design. But the question is, do you need unlimited colors for your design?
 
@@ -174,7 +172,7 @@ To solve this issue, the "TheUI Sveltekit" component library has introduced ten 
 
 <br>
 
-<h3 style="font-size:1.5rem;font-weight:bold">TheUI Colors & Default Values</h3>
+### **TheUI Colors & Default Values**
 
 "TheUI Sveltekit" component library has the following CSS variables and values. All the CSS variables are prefixed with ui to avoid conflict with other vars.
 
@@ -214,7 +212,7 @@ To solve this issue, the "TheUI Sveltekit" component library has introduced ten 
 
 <br>
 
-<h3 style="font-size:1.5rem;font-weight:bold">Use of Custom Colors</h3>
+### **Use of Custom Colors**
 
 You can use custom classes to use the custom colors in your design. Sveltekit Components library includes the following classes:
 
@@ -233,7 +231,7 @@ You can use custom classes to use the custom colors in your design. Sveltekit Co
 
 <br>
 
-<h3 style="font-size:1.5rem;font-weight:bold">Color Customization</h3>
+### **Color Customization**
 
 Now, let's come to the main part of the doc - how to customize it? As you read above on this page, you can do this just with one line of code. Change the value of the corresponding CSS variable you want, and you are good to go. If you want to change other default colors, change values in the same way.
 
@@ -250,19 +248,19 @@ Congratulations! All the components using the brand color and the default text c
 
 <br>
 
-<h2 style="font-size:2rem;font-weight:bold">Contributions</h2>
+## **Contributions**
 
 Please let us know before starting work on any new features or bug. If you're interested in creating a new feature, create a feature request ticket in [Github Issues](https://github.com/theui-dev/sveltekit-components/issues). This allows for open discourse and may help prevent redudant work. This includes but is not limited to: creating new components, adding new utility features, or major alterations to existing work.
 
 <br>
 
-<h2 style="font-size:2rem;font-weight:bold">Copyright and license</h2>
+## **Copyright and license**
 
 Code and documentation copyright 2022 the [M B Parvez](https://www.mbparvez.me), [Gosoft](https://www.gosoft.io) and [TheUI](https://www.theui.dev).
 
 <br>
 
-<h2 style="font-size:2rem;font-weight:bold">Copyright 2022 TheUI</h2>
+## **Copyright 2022 TheUI**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
