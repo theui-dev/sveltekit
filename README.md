@@ -1,7 +1,10 @@
 <h1 style="text-align:center;font-size:3rem;font-weight:bold"> TheUI Sveltekit Components</h1>
 
-<div style="text-align:center;font-size:2rem">
-  A tool of the <b>Sveltekit ecosystem</b>
+<div style="text-align:center;font-size:2rem">A tool of the <b>Sveltekit ecosystem</b></div>
+
+<br>
+
+<div style="text-align:center">
 
 [![npm version](https://badgen.net/npm/v/@theui/sveltekit-components?color=red)](https://www.npmjs.com/package/@theui/sveltekit-components)
 [![npm downloads](https://badgen.net/npm/dt/@theui/sveltekit-components)](https://www.npmjs.com/package/@theui/sveltekit-components)
