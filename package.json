@@ -11,6 +11,8 @@
     "url": "https://github.com/theui-dev/sveltekit-components.git"
   },
   "homepage": "https://www.theui.dev/components/sveltekit",
+  "bugs": "https://github.com/theui-dev/sveltekit-components/issues",
+	"license": "MIT",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
