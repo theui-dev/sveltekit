@@ -1,6 +1,6 @@
 {
-  "name": "@theui/sveltekit-components",
-  "version": "1.0.0-beta.8",
+  "name": "theui-sveltekit",
+  "version": "1.0.0-beta.10",
   "description": "This is an official component library of The UI for Sveltekit. The components designed on the top of TailwindCSS with custom theming. The components are accessible out of the box.",
   "author": {
     "name": "M B Parvez",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/theui-dev/sveltekit-components.git"
+    "url": "https://github.com/theui-dev/sveltekit.git"
   },
   "homepage": "https://www.theui.dev/components/sveltekit",
-  "bugs": "https://github.com/theui-dev/sveltekit-components/issues",
-	"license": "MIT",
+  "bugs": "https://github.com/theui-dev/sveltekit/issues",
+  "license": "MIT",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "package": "svelte-kit package",
+    "package": "svelte-package",
     "preview": "vite preview",
     "test": "playwright test",
     "check": "svelte-check --tsconfig ./tsconfig.json",
@@ -25,6 +25,7 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
+    "@sveltejs/package": "^1.0.0-next.3",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
     "postcss-load-config": "^4.0.1",
@@ -34,16 +35,16 @@
     "tailwindcss": "^3.1.2",
     "tslib": "^2.3.1",
     "typescript": "^4.7.4",
-		"vite": "^3.0.0"
+    "vite": "^3.0.4"
   },
   "type": "module",
   "dependencies": {
-    "@theui/core": "^0.23.0",
     "@tiptap/core": "^2.0.0-beta.182",
     "@tiptap/extension-placeholder": "^2.0.0-beta.53",
     "@tiptap/extension-underline": "^2.0.0-beta.25",
     "@tiptap/starter-kit": "^2.0.0-beta.191",
-    "svelte2tsx": "^0.5.13"
+    "svelte2tsx": "^0.5.13",
+    "theui": "^1.0.0-beta.7"
   },
   "keywords": [
     "sveltekit-components",

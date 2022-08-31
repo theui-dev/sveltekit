@@ -1,9 +1,11 @@
 <script lang='ts'>
-  import { labelClasses } from './controller'
-  import type { LABEL_STYLE_TYPE } from '@theui/core/types'
+  import type { LABEL_STYLE_TYPE } from "theui/types"
   export let label: string|undefined = undefined
-  export let labelFor: string|undefined = undefined
-  export let labelStyle: LABEL_STYLE_TYPE = null
+  export let id: string|undefined = undefined
+  export let style: string|undefined = undefined
 </script>
 
-<label class={labelClasses(labelStyle)} for={labelFor}>{@html label}</label>
+<label class={$$props.class ? $$props.class : style||'font-medium'} for={id}>
+  {@html label}
+  <slot/>
+</label>

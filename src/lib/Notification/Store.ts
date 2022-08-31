@@ -1,5 +1,5 @@
-import type { NOTIFY_CONFIG_TYPE } from '@theui/core/types'
-import type { Writable } from 'svelte/store'
+import type { NOTIFY_CONFIG_TYPE } from 'theui/types'
+import type { Writable } from "svelte/store"
 import { writable } from 'svelte/store'
 import { rounded, token } from '../utility'
 type NOTIFICATION_TYPE = 'error'| 'info'| 'success' | 'warning'

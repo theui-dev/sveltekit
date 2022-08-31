@@ -1,8 +1,8 @@
 <script lang='ts'>
-	import type { DD_CONFIG_TYPE, DD_DATA } from '@theui/core/types'
-  import {  animate, rounded, token } from '../utility'
-  import { activeDropdownID } from '../Stores'
-  import { Button } from '../index'
+	import type { DD_CONFIG_TYPE, DD_DATA } from "theui/types"
+  import { animate, rounded, token } from "theui"
+  import { activeDropdownID } from "../Stores"
+  import { Button } from "../index"
 
 	export let config: DD_CONFIG_TYPE = {}
 	export let id: string = token()
@@ -10,23 +10,13 @@
 	export let label: string = ''
 
 	let C: DD_CONFIG_TYPE = {
-		animate        			: true,
-		// animateSpeed        : 'fast',
-		// animation           : 'slide-up',
+		animate        			: 'fast',
 		alignEnd          	: false,
 		backdrop            : false,
 		block               : false,
 		closeOnClick        : true,
 		closeOnOutsideClick : true,
-		// itemConfig          : {
-		// 	activeClass     	: 'bg-brand/20',
-		// 	class           	: string,
-		// 	dividerClass    	: 'border-tertiary',
-		// 	headerClass     	: 'p-4 font-semibold text-xs opacity-75 uppercase'
-		// },
 		reset								: false,
-		// rounded             : 'md',
-		// size                : 'md',
 		standalone          : true,
 	}
 	Object.assign(C, config)
@@ -65,13 +55,13 @@
 	}
 
 	let getContainerClasses = () => {
-		return  'dropdown relative inline-block ' + animate(C?.animateSpeed||'fast', C?.animate) +
+		return  'dropdown relative inline-block ' + animate(C?.animate) +
 						(C?.alignEnd ? ' dropdown-right ' : ' ') + getContainerSize()
 	}
 
 	let getDropdownClasses = () => {
-		return  (C?.animation||'slide-up') + ' dropdown-content absolute list-none ' +
-		animate(C?.animateSpeed||'fast', C?.animate) + rounded(C?.rounded||'md')
+		return  (C?.animation||'slide-up') + ' dropdown-content absolute list-none z-[11] ' +
+		animate(C?.animate) + rounded(C?.rounded||'md')
 	}
 
 	let getContainerSize = () => {
@@ -132,6 +122,12 @@
 </div>
 
 <style lang='postcss'>
+	.dropdown .backdrop{
+    @apply z-10;
+  }
+  .dropdown-content{
+    @apply z-[11];
+  }
 	/* Dropdown visibility */
 	.dropdown .dropdown-content,.dropdown .backdrop{
 		@apply invisible opacity-0;

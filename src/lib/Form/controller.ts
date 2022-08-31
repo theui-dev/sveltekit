@@ -1,115 +1,127 @@
-import { get } from 'svelte/store'
-import { CHECKBOX_RADIO_CONFIG, INPUT_CONFIG, FILE_INPUT_CONFIG, LABEL_CONFIG } from '../config'
-import { animate, rounded, getConfig } from '../utility'
-import type { CHECKBOX_RADIO_CONFIG_TYPE, INPUT_CONFIG_TYPE, LABEL_STYLE_TYPE } from '@theui/core/types'
+import { animate, rounded } from "theui"
+import type { INPUT_CONFIG_TYPE } from 'theui/types'
 
-let CORE_CHECKBOX_RADIO_CONFIG: CHECKBOX_RADIO_CONFIG_TYPE = get(CHECKBOX_RADIO_CONFIG)
-let CORE_INPUT_CONFIG: INPUT_CONFIG_TYPE = get(INPUT_CONFIG)
-let CORE_FILE_INPUT_CONFIG: INPUT_CONFIG_TYPE = get(FILE_INPUT_CONFIG)
-let CORE_LABEL_CONFIG: LABEL_STYLE_TYPE = get(LABEL_CONFIG)
-
-export let containerCls = (userConfig: INPUT_CONFIG_TYPE): string => {
-  let config: any = {}
-  Object.assign(config, CORE_INPUT_CONFIG, userConfig)
-  return  appearanceCls(config?.appearance||'default') + marginCls(config?.marginBottom||8) +
-          ((config?.reset||getConfig('reset')) ? '' : (config?.grow ? ' flex-grow' : '')) +
-          containerSize(config?.size||'md') + ' ' + (config?.containerClasses||'flex flex-col')
+export let getStyle = (variant: string) : string => {
+  let cls = variant == 'filled' ? 'bg-gray-50 dark:bg-gray-900 text-default focus:ring-brand border border-gray-200 dark:border-gray-600 focus:border-brand focus:bg-transparent' :
+  variant == 'bordered' ? 'border border-gray-100 dark:border-gray-700 text-default focus:border-brand bg-transparent focus:ring-brand' :
+  variant == 'flat'     ? 'border-0 border-b-2 border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-default focus:ring-brand focus:border-brand focus:bg-transparent' : ''
+  return ' ' + cls
 }
 
-let appearanceCls = (appearance: string) => {
-  return appearance == 'flat' ? 'input-flat' : appearance == 'material' ? 'input-material ' : 'input-default'
+export let getSize = (size: string, file: boolean = false) : string => {
+  if(file){
+    return size == 'sm' ? ' file:p-2 file:text-sm' : size == 'md' ? ' file:p-3' : size == 'lg' ? ' file:p-4 file:text-xl' : size == 'xl' ? ' file:p-5 file:text-2xl' : ''
+  }
+  return size == 'sm' ? ' p-2 text-sm' : size == 'md' ? ' p-3' : size == 'lg' ? ' p-4 text-xl' : size == 'xl' ? ' p-5 text-2xl' : ''
 }
 
-let marginCls = (marginBottom: number) => {
-  return marginBottom == 0 ? ' mb-0' : marginBottom == 2 ? ' mb-2' : marginBottom == 4 ? ' mb-4' : marginBottom == 12 ? ' mb-12' : ' mb-8'
+export let getContainerClass = (config: INPUT_CONFIG_TYPE): string => {
+  return  config?.reset ? 'input-box input-box-reset ' : ('input-box flex flex-col gap-2 ' + (config?.inputGrow ? 'flex-grow ' : ''))
 }
 
-let containerSize = (size: string) => {
-  return size == 'xs' ? ' input-xs' : size == 'sm' ? ' input-sm' : size == 'lg' ? ' input-lg' : size == 'xl' ? ' input-xl' : ' input-md'
-}
-
-export let getInputCls = (userConfig: INPUT_CONFIG_TYPE, attr: any): string => {
-  let config: any = {}
-  Object.assign(config, CORE_INPUT_CONFIG, userConfig)
-  let cls = animate(config?.animateSpeed||getConfig('animateSpeed'), config?.animate||getConfig('animate')) +
-            rounded(config?.rounded||getConfig('isRounded')) + ' ' +
-            (typeof config?.inputClasses == 'string' ? config?.inputClasses : (config?.inputClasses[config?.appearance||'default'])) + ' ' +
-            (typeof config?.inputFocusClasses == 'string' ? config?.inputFocusClasses : (config?.inputFocusClasses[config?.appearance||'default']))
-  if(config?.reset||getConfig('reset')) return cls + ' ' + config?.theme
-
-  cls +=  ' ' + inputSize(config?.size||'md') + (config?.theme||' bg-primary focus-within:bg-secondary') +
-          (attr?.disabled ? ' disabled:bg-gray-200 dark:disabled:bg-gray-900 disabled:text-gray-500 disabled:opacity-50 disabled:cursor-not-allowed' : '') +
-          (attr?.readonly ? ' read-only:bg-gray-200 dark:read-only:bg-gray-900 read-only:text-gray-500 read-only:opacity-50 read-only:pointer-events-non' : '')
+export let getInputClass = (config: INPUT_CONFIG_TYPE, attr: any): string => {
+  if(config?.reset) return ''
+  let cls = animate(config?.animate) + (config?.variant == 'flat' ? rounded(config.rounded, 'top') : rounded(config.rounded))
+  if(attr?.disabled){
+    cls += ' disabled:bg-gray-100 dark:disabled:bg-gray-900 disabled:cursor-not-allowed disabled:opacity-50 disabled:select-none'
+  }
+  if(attr?.readonly){
+    cls += ' read-only:bg-gray-100 dark:read-only:bg-gray-900 read-only:pointer-events-none read-only:opacity-50'
+  }
   return cls
 }
 
-let inputSize = (size: string) => {
-  return size == 'none' ? '' : size == 'xs' ? 'p-1 text-xs' : size == 'sm' ? 'px-3 py-2 text-sm' : size == 'lg' ? 'px-6 py-3 text-lg' : size == 'xl' ? 'px-8 py-4 text-xl' : 'px-4 py-3 text-base'
+export let getCheckRadioClass = (config: object, type:string = 'checkbox'): string => {
+  let cls = type + ' '
+  if(type == "checkbox"){
+    cls += ((config?.size == 'sm' ? 'checkbox-sm h-4 w-4' : config?.size == 'md' ? 'checkbox-md h-6 w-6' : config?.size == 'lg' ? 'checkbox-md h-8 w-8' : '') + rounded(config?.rounded))
+  }else{
+    cls += config?.size == 'sm' ? 'radio-sm h-4 w-4' : config?.size == 'md' ? 'radio-md h-6 w-6' : config?.size == 'lg' ? 'radio-md h-8 w-8' : ''
+  }
+  cls += ' bg-gray-100 dark:bg-gray-700 border border-gray-400 dark:border-transparent text-brand focus-within:ring-brand dark:checked:bg-brand !ring-offset-primary'
+  return cls
 }
 
-export let fileInputCls = (userConfig: INPUT_CONFIG_TYPE, attr: any): string => {
-  let config: any = {}
-  Object.assign(config, CORE_FILE_INPUT_CONFIG, userConfig)
+export let getCheckRadioStateClass = (attr: any): string => {
+  if(attr?.disabled) return ' cursor-not-allowed opacity-50 select-none'
+  if(attr?.readonly) return ' pointer-events-none opacity-50'
+  return ''
+}
 
-  let cls = animate(config?.animateSpeed||getConfig('animateSpeed'), config?.animate||getConfig('animate')) +
-            rounded(config?.rounded||getConfig('isRounded'), 'file') + ' '
-  if(config?.reset||getConfig('reset')){
-    return cls + (config?.theme||'') + ' ' + (config?.fileBtnClasses||'') + ' ' + (config.fileBtnTheme||'') + ' ' +
-    ((typeof config.inputClasses == 'string' ? config.inputClasses : (config.inputClasses[config.appearance]||'')) + ' ' +
-    (typeof config.inputFocusClasses == 'string' ? config.inputFocusClasses : (config.inputFocusClasses[config.appearance]||'')))
+export let getFileInputCls = (config: INPUT_CONFIG_TYPE, attr: any): string => {
+  if(config?.reset) return ''
+
+  let cls = ' file:px-4 focus:ring-brand focus:border-brand focus:outline-brand '
+
+  if(config.variant !== 'flat'){
+    return getInputClass(config, attr) + getStyle(config.variant) + getSize(config.size, true) + cls + (config?.buttonStyle||'')
+  }else{
+    cls += animate(config?.animate) + ' text-gray-500/50' + getSize(config.size, true) + cls + (config?.buttonStyle||'')
+    if(attr?.disabled){
+      cls += ' disabled:bg-gray-100 dark:disabled:bg-gray-900 disabled:cursor-not-allowed disabled:opacity-50 disabled:select-none'
+    }
+    if(attr?.readonly){
+      cls += ' read-only:bg-gray-100 dark:read-only:bg-gray-900 read-only:pointer-events-none read-only:opacity-50'
+    }
+    return cls
   }
 
-  return cls + fineInputSize(config?.inputClasses||'md') + (attr?.disabled ? ' disabled:bg-gray-200 dark:disabled:bg-gray-900 disabled:text-gray-500 disabled:opacity-50 disabled:cursor-not-allowed' : '') +  (attr?.readonly ? ' read-only:bg-gray-200 dark:read-only:bg-gray-900 read-only:text-gray-500 read-only:opacity-50 read-only:pointer-events-non' : '') + ' ' +
-  (config?.theme||'bg-primary focus-within:bg-secondary') + ' ' +
-  (config?.fileBtnClasses||'file:mr-4 file:border-0 file:text-sm file:font-semibold file:cursor-pointer') + ' ' +
-  (config?.fileBtnTheme||'file:bg-tertiary hover:file:bg-brand hover:file:text-on-brand dark:file:text-white text-gray-500') + ' ' +
-  ((typeof config.inputClasses == 'string' ? config.inputClasses : (config.inputClasses[config.appearance||'default'])) + ' ' +
-  (typeof config.inputFocusClasses == 'string' ? config.inputFocusClasses : (config.inputFocusClasses[config.appearance||'default'])))
+  // let cls = animate(config?.animate) + rounded(config?.rounded, 'file') + ' ' + (config?.class||'') + ' ' + (config?.buttonStyle||'') +
+  // ((typeof config.inputClass == 'string' ? config.inputClass : (config.inputClass[config.appearance]||'')) + ' ' +
+  // (typeof config.inputFocusClasses == 'string' ? config.inputFocusClasses : (config.inputFocusClasses[config.appearance]||'')))
+  // return cls + fineInputSize(config?.inputClass||'md') + (attr?.disabled ? ' disabled:bg-gray-200 dark:disabled:bg-gray-900 disabled:text-gray-500 disabled:opacity-50 disabled:cursor-not-allowed' : '') +  (attr?.readonly ? ' read-only:bg-gray-200 dark:read-only:bg-gray-900 read-only:text-gray-500 read-only:opacity-50 read-only:pointer-events-non' : '') + ' ' +
+  // (config?.theme||'bg-primary focus-within:bg-secondary') + ' ' +
+  // (config?.fileBtnClasses||'file:mr-4 file:border-0 file:text-sm file:font-semibold file:cursor-pointer') + ' ' +
+  // (config?.fileBtnTheme||'file:bg-tertiary hover:file:bg-brand hover:file:text-on-brand dark:file:text-white text-gray-500') + ' ' +
+  // ((typeof config.inputClass == 'string' ? config.inputClass : (config.inputClass[config.variant])) + ' ' +
+  // (typeof config.inputFocusClasses == 'string' ? config.inputFocusClasses : (config.inputFocusClasses[config.variant])))
 }
 
 let fineInputSize = (size: string) => {
   return size == 'xs' ? 'file:px-1 file:py-1 pr-1 text-xs' : size == 'sm' ? 'file:px-3 pr-3 file:py-2 text-sm' : size == 'lg' ? 'file:px-6 pr-6 file:py-3 text-lg' : size == 'xl' ? 'file:px-8 pr-8 file:py-4 text-xl' : 'file:px-4 pr-4 file:py-3 text-base'
 }
 
-export let inputLabelStyle = (userConfig: INPUT_CONFIG_TYPE) => {
-  let config: any = {}
-  Object.assign(config, CORE_LABEL_CONFIG, userConfig.labelStyle)
-  return  (config?.color||'text-inherit') + ' ' +
-          (config?.textSize||'text-xs') + ' ' +
-          (config?.fontWeight||'font-semibold') + ' ' +
-          (config?.cls||'uppercase') + marginCls(config?.marginBottom||2)
-}
 
-export let labelClasses = (userConfig: LABEL_STYLE_TYPE) => {
-  let config: any = {}
-  Object.assign(config, CORE_LABEL_CONFIG, userConfig)
-  return  (config?.color||'text-inherit') + ' ' +
-          (config?.textSize||'text-xs') + ' ' +
-          (config?.fontWeight||'font-semibold') + ' ' +
-          (config?.cls||'uppercase') + marginCls(config?.marginBottom||2)
-}
 
-export let isSelected = (d: any, value: any) => {
-  return (d.selected || value==d.value || value==d.text || value == d)
-}
 
-export let getCheckRadioClass = (userConfig: CHECKBOX_RADIO_CONFIG_TYPE, type:string = ''): string => {
-  let config: any = {}
-  Object.assign(config, CORE_CHECKBOX_RADIO_CONFIG, userConfig)
-  let cls = (config?.class||'text-brand focus:ring-brand dark:checked:bg-brand') + ' ' +
-            (config?.size == 'lg' ? 'checkbox-lg h-6 w-6' : config?.size == 'xl' ? 'checkbox-lg h-8 w-8' : 'checkbox-md h-4 w-4') +
-            ((config?.reset||getConfig('reset')) ? '' : ' bg-gray-100 dark:bg-gray-700 border border-gray-400 dark:border-transparent')
 
-  if(type !== 'radio'){
-    if((config?.rounded||getConfig('isRounded')) && !config?.size) cls += ' rounded'
-    else cls += rounded(config?.rounded||getConfig('isRounded'))
-  }
-  return cls
-}
 
-export let getHeightFixClass = (userConfig: CHECKBOX_RADIO_CONFIG_TYPE, helper: string): string => {
-  if(helper === null || helper === '') return ''
-  let config: any = {}
-  Object.assign(config, CORE_CHECKBOX_RADIO_CONFIG, userConfig)
-  return config?.size == 'lg' ? 'h-8' : config?.size == 'xl' ? 'h-10' : 'h-6'
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export let inputLabelStyle = (userConfig: INPUT_CONFIG_TYPE) => {
+//   let config: any = {}
+//   Object.assign(config, CORE_LABEL_CONFIG, userConfig.labelStyle)
+//   return  (config?.color||'text-inherit') + ' ' +
+//           (config?.textSize||'text-xs') + ' ' +
+//           (config?.fontWeight||'font-semibold') + ' ' +
+//           (config?.cls||'uppercase') + marginCls(config?.marginBottom||2)
+// }
+
+// export let labelClasses = (userConfig: LABEL_STYLE_TYPE) => {
+//   let config: any = {}
+//   Object.assign(config, CORE_LABEL_CONFIG, userConfig)
+//   return  (config?.color||'text-inherit') + ' ' +
+//           (config?.textSize||'text-xs') + ' ' +
+//           (config?.fontWeight||'font-semibold') + ' ' +
+//           (config?.cls||'uppercase') + marginCls(config?.marginBottom||2)
+// }
+
+// export let isSelected = (d: any, value: any) => {
+//   return (d.selected || value==d.value || value==d.text || value == d)
+// }

@@ -1,8 +1,8 @@
 <script lang="ts">
   import { getContext } from "svelte"
   import { TABLE } from "../index"
+  import Cell from "./TableCell.svelte"
   const { config } = getContext(TABLE)
-  import Cell from './TableCell.svelte'
 
   export let data       : object | string[] | (object | string[])[] | null	= null
   export let keys       : string[]|null = null

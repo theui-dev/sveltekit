@@ -1,6 +1,6 @@
 <script lang='ts'>
-  import type { ROUNDED_TYPE } from '@theui/core/types'
-  import { rounded } from '../utility'
+  import type { ROUNDED_TYPE } from "theui/types"
+  import { rounded } from "theui"
 
   export let grow     : boolean = false
   export let round    : ROUNDED_TYPE = 'full'

@@ -1,40 +1,49 @@
 <script lang='ts'>
-  import { Label } from '../index'
-  import { token } from '../utility'
-  import { containerCls, getInputCls, isSelected } from './controller'
-  import type { INPUT_CONFIG, SELECT_DATA_TYPE } from '@theui/core/types'
+  import type { INPUT_CONFIG_TYPE, SELECT_DATA_TYPE } from "theui/types"
+  import { token        } from "theui"
+  import { getContext   } from "svelte"
+  import { FORM         } from "../index"
+  import { Input, Label } from "../index"
+  import { getContainerClass, getInputClass, getSize, getStyle } from "./controller"
+  const ctx = getContext(FORM || {})
 
-  export let name   : string
-  export let value  : string = ''
-  export let attr   : object = {}
-  export let label  : string|boolean = false
-  export let config : INPUT_CONFIG = {}
-  export let data   : SELECT_DATA_TYPE[] = []
+  // Input attributes
+  export let config     : INPUT_CONFIG_TYPE = {}
+  export let id         : string = token()
+  export let label      : string|undefined = undefined
+  export let name       : string
+  export let value      : any = ''
+  export let labelStyle : string|undefined = undefined
+  export let data       : SELECT_DATA_TYPE[] = []
+  
+  let C:INPUT_CONFIG_TYPE = {rounded : 'md', inputGrow: true, size: 'md', variant: 'bordered'}
+  Object.assign(C, ctx?.formConfig||{}, config)
 
-  let id = token()
+  let cls = getInputClass(C, $$restProps) + getStyle(C?.variant) + getSize(C?.size)
 </script>
 
-<div class={containerCls(config)}>
-  {#if label}<Label labelStyle={config.labelStyle} labelFor={id} label={label}/>{/if}
-
-  {#if attr?.readonly && data.lenth > 0}
-    {#each data as d}
-      {#if isSelected(d, value)}
-        <input {id} class={getInputCls(config, attr)} type="text" {name} {...attr} bind:value/>
-      {/if}
-    {/each}
-  {:else}
-  <select {id} class={getInputCls(config, attr)} {name} {...attr} bind:value>
-    {#if attr.placeholder}<option value='' disabled>{attr.placeholder}</option>{/if}
-    {#if data.lenth > 0}
+<div class={getContainerClass(C)}>
+  {#if label}<Label style={C.labelStyle||labelStyle} {id} label={label}/>{/if}
+  {#if $$restProps.readonly ||  $$restProps.disabled}
+    {#if data.length > 0 && value == ''}
       {#each data as d}
-        <option value={d.value||d.text||d} selected={isSelected(d, value)}>{d.text||d}</option>
+        {#if d.selected}<Input class={$$props.class ? $$props.class : cls} {id} {name} readonly value={d?.value||d?.text}/>{/if}
       {/each}
-    {:else}
-      <slot/>
     {/if}
-  </select>
+    {#if value != ''}<Input class={$$props.class ? $$props.class : cls} {id} {name} readonly {value}/>{/if}
+  {:else}
+    <select class={$$props.class ? $$props.class : cls} {...$$restProps} {id} {name} bind:value on:change on:click on:focus>
+      {#if $$restProps.placeholder}<option value='' disabled>{$$restProps.placeholder}</option>{/if}
+      {#if data.length > 0}
+        {#each data as d}
+          <option value={d.value||d.text||d} selected={d?.selected || value == d.value} disabled={d?.disabled}>{d.text||d}</option>
+        {/each}
+      {:else}
+        <slot/>
+      {/if}
+    </select>
   {/if}
+  <slot name="helper" />
 </div>
 
 <style lang="postcss">

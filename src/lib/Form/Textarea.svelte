@@ -1,25 +1,38 @@
 <script lang='ts'>
-  import { Label } from '../index'
-  import { token } from '../utility'
-  import { containerCls, getInputCls } from './controller'
-  import type { INPUT_CONFIG } from '@theui/core/types'
-  
+  import type { INPUT_CONFIG_TYPE } from "theui/types"
+  import { token      } from "theui"
+  import { getContext } from "svelte"
+  import { FORM       } from "../index"
+  import { Label      } from "../index"
+  const ctx = getContext( FORM || {} )
+  import { getContainerClass, getInputClass, getSize, getStyle } from "./controller"
+
   // Input attributes
+  export let config : INPUT_CONFIG_TYPE = {}
+  export let label  : string|undefined = undefined
   export let name   : string
-  export let value  : string = ''
-  export let attr   : object = {}
-  export let label  : string|boolean = false
-  export let config : INPUT_CONFIG = {}
-  export let id = token()
+  export let value  : any = ''
+
+  let C:INPUT_CONFIG_TYPE = {rounded : 'md', inputGrow: true, size: 'md', variant: 'bordered' }
+  Object.assign(C, ctx?.formConfig||{}, config)
+
+  let cls = getInputClass(C, $$restProps) + getStyle(C?.variant) + getSize(C?.size)
+  let id = token()
 </script>
 
-<div class={containerCls(config)}>
+<div class={getContainerClass(C)}>
   {#if label}<Label labelStyle={config.labelStyle} labelFor={id} label={label}/>{/if}
-  <textarea {id} class={getInputCls(config, attr)} {name} {...attr} bind:value></textarea>
+  <textarea {...$$restProps} class={$$props.class ? $$props.class : cls} {id} {name} bind:value
+    on:blur
+    on:change
+    on:click
+    on:focus
+    on:keydown
+    on:keypress
+    on:keyup
+    on:mouseover
+    on:mouseenter
+    on:mouseleave
+    on:paste
+  ></textarea>
 </div>
-
-<style lang="postcss">
-  :global(textarea){
-    @apply outline-transparent ring-transparent border-transparent;
-  }
-</style>

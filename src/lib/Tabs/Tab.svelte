@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getContext } from "svelte"
   import { TABS } from "../index"
-  import { rounded, shadow } from '../utility'
+  import { rounded, shadow } from "theui"
 
   const tab = {}
   const { registerTab, selectTab, selectedTab, config, variant } = getContext(TABS)
