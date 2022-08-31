@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { PROGRESS_CONFIG_TYPE } from '@theui/core/types'
-  import { onMount } from 'svelte'
-  import { rounded, token } from '../utility'
+  import type { PROGRESS_CONFIG_TYPE } from "theui/types"
+  import { onMount } from "svelte"
+  import { rounded, token } from "theui"
 
   export let config: PROGRESS_CONFIG_TYPE = {}
   export let id: string = token()

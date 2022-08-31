@@ -1,7 +1,7 @@
 <script lang='ts'>
-  import type { BUTTON_CONFIG_TYPE } from '@theui/core/types'
-  import { animate, rounded, shadow, token } from '../utility'
-  import { Svg } from '../index'
+  import type { BUTTON_CONFIG_TYPE } from "theui/types"
+  import { animate, rounded, shadow, token } from "theui"
+  import { Svg } from "../index"
 
   export let config     : BUTTON_CONFIG_TYPE = {}
   export let label      : string = ''
@@ -11,7 +11,7 @@
   export let externalIcon : boolean = true
   export let prefetch     : boolean = true
 
-  let C = {animate : true, animateSpeed : 'fast', outline : false, shadow : 'none'}
+  let C = {animate : 'fast', outline : false, shadow : 'none'}
   Object.assign(C, config)
 
   let size = (size: string|0): string => {
@@ -32,7 +32,7 @@
       : 'btn-active ' + (C?.activeClass == true ? (C?.outline ? 'border-brand bg-brand text-on-brand ' : 'border-brand-active bg-brand-active text-on-brand ') : C?.activeClass)
     )
   }
-  $: classes += rounded(C?.rounded) + animate(C?.animateSpeed, C?.animate) + shadow(C?.shadow)
+  $: classes += rounded(C?.rounded||'md') + animate(C?.animate) + shadow(C?.shadow)
 </script>
 
 {#if href}

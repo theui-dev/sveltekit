@@ -1,8 +1,8 @@
 <script lang="ts">
   import { getContext } from "svelte"
   import { NAV } from "../index"
+  import { Button, Svg } from "../index"
   const { config, id, mobileNav } = getContext(NAV)
-  import { Button, Svg } from '../index'
 
   let toggle = () => {
     if ($mobileNav.includes(id)) {

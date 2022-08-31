@@ -3,20 +3,19 @@
 </script>
 
 <script lang='ts'>
-  import type { NAV_CONFIG_TYPE } from '@theui/core/types'
-	import { setContext, onDestroy } from 'svelte'
-  import { onMount } from 'svelte'
-  import { mobileNav } from '../Stores'
-  import { animate, rounded, token } from '../utility'
-  import { NavCollapse } from '../index'
+  import type { NAV_CONFIG_TYPE } from "theui/types"
+	import { setContext, onDestroy } from "svelte"
+  import { onMount } from "svelte"
+  import { animate, rounded, token } from "theui"
+  import { mobileNav } from "../Stores"
+  import { NavCollapse } from "../index"
 
   export let segment: string = '/'
   export let config: NAV_CONFIG_TYPE = {}
 
   let C: NAV_CONFIG_TYPE = {
     activeLinkStyle       : 'p-3 text-default text-sm',
-    animate               : true,
-    animateSpeed          : 'fast',
+    animate               : 'fast',
     height                : 'md',
     linkStyle             : 'p-3 text-gray-700 dark:text-gray-300 hover:text-default text-sm',
     responsive            : 'lg',
@@ -64,9 +63,9 @@
   class:navbar-mini={miniNav}
   class:navbar-hidden={hideNav}
   class:fixed={C.scrollBehavior !== 'default'}
-  class="navbar {$$props.class||'bg-primary left-0 top-0 w-full flex items-center justify-center'} {animate('slow', C.animate)} {miniNav||(hideNav===false && scrollPos!==0) ? C.scrollClass : ''}"
+  class="navbar {$$props.class||'bg-primary left-0 top-0 w-full flex items-center justify-center'} {animate(C.animate?'slow':false)} {miniNav||(hideNav===false && scrollPos!==0) ? C.scrollClass : ''}"
 >
-  <div class="w-full max-w-[var(--max-width)] flex grow gap-x-8 items-center justify-between relative {heightCls()} {miniNav||(hideNav===false && scrollPos!==0) ? 'px-4' : 'px-8'} {animate(C?.animateSpeed, C.animate)}">
+  <div class="w-full max-w-[var(--max-width)] flex grow gap-x-8 items-center justify-between relative {heightCls()} {miniNav||(hideNav===false && scrollPos!==0) ? 'px-4' : 'px-8'} {animate(C.animate)}">
     <slot {segment}></slot>
   </div>
 </nav>

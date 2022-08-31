@@ -3,11 +3,11 @@
 </script>
 
 <script lang="ts">
-	import { setContext, onDestroy } from 'svelte'
-  import { token } from '../utility'
-  import type { TABLE_CONFIG_TYPE } from '@theui/core/types'
-  import TableHead from './TableHead.svelte'
-  import TableBody from './TableBody.svelte'
+  import type { TABLE_CONFIG_TYPE } from "theui/types"
+	import { setContext, onDestroy } from "svelte"
+  import { token } from "theui"
+  import TableHead from "./TableHead.svelte"
+  import TableBody from "./TableBody.svelte"
 
   export let config   : TABLE_CONFIG_TYPE           = {}
   export let id       : string                      = token()

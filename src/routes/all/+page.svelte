@@ -1,8 +1,9 @@
 <script lang="ts">
   import { token } from "$lib/utility"
   import { Accordion, AccordionGroup, Alert, Badge, Breadcrumb, Button, ButtonGroup, Collapse, Container, Dropdown, Svg, Modal, Navbar, NavContainer, Notification, notify, Offcanvas, Progress, ToggleTheme, Tooltip, Tabs, TabList, Tab, TabPanel, Popup} from "$lib"
-  import {Editor, Checkbox, Fieldset, Fileinput, Input, Radio, Textarea, Select } from '$lib'
-  import type { BREADCRUMB_DATA_TYPE } from "@theui/core/types"
+  // import {Editor, Checkbox, Fieldset, Fileinput, Input, Radio, Textarea, Select } from '$lib'
+  import { Checkbox, Input, Textarea, Radio, Select, Editor, Fileinput, Form } from '$lib'
+  import type { BREADCRUMB_DATA_TYPE, SELECT_DATA_TYPE } from "theui/types"
 
   let data = [
     {
@@ -44,12 +45,37 @@
       text: "Contact"
     },
   ]
+
+  let selectData: SELECT_DATA_TYPE[] = [
+    {
+      text      : 'Sel 1',
+      value     : 1,
+    },
+    {
+      text      : 'Sel 2',
+      value     : 2,
+      selected  : true
+    },
+    {
+      text      : 'Sel 3',
+      value     : 3,
+    },
+    {
+      text      : 'Sel 4',
+      value     : 4,
+      disabled  : true
+    },
+    {
+      text      : 'Sel 5',
+      value     : 5,
+    },
+  ]
+
 </script>
 
 <svelte:head>
   <title>Svelte App</title>
 </svelte:head>
-
 
 <!-- <Popup>
   Hello Entry
@@ -75,6 +101,52 @@
 </Navbar>
 
 <Container>
+  <p class="py-4"></p>
+  <Checkbox name="helloCheck" label="Hello checkbox" helperText="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas." size="sm" />
+  <p class="py-4"></p>
+  <Checkbox name="helloCheck" label="Hello checkbox" helperText="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas." size="md" />
+  <p class="py-4"></p>
+  <Checkbox name="helloCheck" label="Hello checkbox" helperText="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas." size="lg" />
+  <p class="py-4"></p>
+  <Checkbox name="helloCheck" label="Hello checkbox" helperText="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. " size="xl" />
+  <p class="py-4"></p>
+  <Checkbox name="helloCheck" label="Disabled checkbox" disabled helperText="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. " size="xl" />
+  <p class="py-4"></p>
+
+  <Radio name="helloCheck" helperText="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. " label="Hello Radio" size="sm" />
+  <p class="py-4"></p>
+  <Radio name="helloCheck" label="Hello Radio" helperText="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. " size="md" />
+  <p class="py-4"></p>
+  <Radio name="helloCheck" disabled helperText="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. " label="Disabled Radio" size="lg" />
+  <p class="py-4"></p>
+
+  <Select name="myselect_1" config={{ variant: 'flat' }}>
+    <option value="">Select</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </Select>
+  <p class="py-4"></p>
+  <Select name="myselect_1" config={{ variant: 'flat' }} data={selectData}/>
+  <p class="py-4"></p>
+
+  <Form action="/" size="sm">
+    <Input name="fullName" label="Name" disabled="true" value="Hello" />
+    <Input name="fullName" label="Name" readonly="true" value="Hello" />
+    <Input name="fullName" label="Name" placeholder="Hello text" />
+    <Input name="fullName" label="Name" placeholder="Hello text" />
+    <Input name="fullName" label="Email" type="email" labelStyle="text-red-500 font-light" />
+    <Textarea name="name" label="Hello" placeholder="Enter your message" />
+    <h3 class="pt-8 pb-4 font-semibold text-xl">Editor</h3>
+    <Editor name="test"/>
+    <Fileinput name="myFile" config={{ variant: 'flat'
+    // , rounded: 'none' 
+    }} />
+  </Form>
+
+  
+  <Input name="fullName" label="Name" config={{ size: 'lg', variant: 'flat' }} />
+  <Input name="fullName" label="Email" type="email" />
 
   <h3 class="pt-8 pb-4 font-semibold text-xl">Accordion</h3>
 
@@ -295,55 +367,44 @@
 
   <hr class="my-4">
 
-  <h3 class="pt-8 pb-4 font-semibold text-xl">Editor</h3>
-  <Editor name="test"/>
-
   <h3 class="pt-8 pb-4 font-semibold text-xl">Form Input</h3>
   <div class="grid grid-cols-2 gap-8 mb-16">
     <div>
-      <Checkbox name="helloCheck" helperText="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas." text="Hello checkbox" />
-
-      <p class="py-4"></p>
-      <Checkbox name="helloCheck" text="Hello checkbox" />
-      <p class="py-4"></p>
-      <Checkbox name="helloCheck" helperText="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. " text="Hello checkbox" config={{ size: 'xl'}} />
-      <Radio name="helloCheck" helperText="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. " text="Hello checkbox" />
-      <p class="py-4"></p>
-      <Radio name="helloCheck" text="Hello checkbox" config={{ size: 'lg'}} />
-      <p class="py-4"></p>
-      <Radio name="helloCheck" helperText="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. " text="Hello checkbox" config={{ size: 'xl'}} />
+      <!-- 
+        
+         -->
     </div>
     <div>
-      <Fieldset label="My Checkboxes" cls="flex items-center gap-4">
-        <Checkbox name="helloCheck" text="Hello checkbox" config={{ classes: "text-red-500 focus:ring-red-500 checked:ring-red-500"}} />
+      <!-- <Fieldset label="My Checkboxes" cls="flex items-center gap-4">
+        <Checkbox name="helloCheck" label="Hello Radio" config={{ classes: "text-red-500 focus:ring-red-500 checked:ring-red-500"}} />
         <p class="py-4"></p>
-        <Checkbox name="helloCheck" text="Hello checkbox" config={{ classes: "text-red-500 focus:ring-red-500 checked:ring-red-500"}} />
+        <Checkbox name="helloCheck" label="Hello Radio" config={{ classes: "text-red-500 focus:ring-red-500 checked:ring-red-500"}} />
         <p class="py-4"></p>
-        <Checkbox name="helloCheck" text="Hello checkbox" config={{ classes: "text-red-500 focus:ring-red-500 checked:ring-red-500"}} />
+        <Checkbox name="helloCheck" label="Hello Radio" config={{ classes: "text-red-500 focus:ring-red-500 checked:ring-red-500"}} />
       </Fieldset>
       <Fieldset label="My Checkboxes" cls="flex items-center gap-4">
-        <Radio name="helloCheck" text="Hello checkbox" config={{ classes: "text-red-500 focus:ring-red-500 checked:ring-red-500"}} />
+        <Radio name="helloCheck" label="Hello Radio" config={{ classes: "text-red-500 focus:ring-red-500 checked:ring-red-500"}} />
         <p class="py-4"></p>
-        <Radio name="helloCheck" text="Hello checkbox" config={{ classes: "text-red-500 focus:ring-red-500 checked:ring-red-500"}} />
+        <Radio name="helloCheck" label="Hello Radio" config={{ classes: "text-red-500 focus:ring-red-500 checked:ring-red-500"}} />
         <p class="py-4"></p>
-        <Radio name="helloCheck" text="Hello checkbox" config={{ classes: "text-red-500 focus:ring-red-500 checked:ring-red-500"}} />
-      </Fieldset>
+        <Radio name="helloCheck" label="Hello Radio" config={{ classes: "text-red-500 focus:ring-red-500 checked:ring-red-500"}} />
+      </Fieldset> -->
     </div>
   </div>
   <div class="grid grid-cols-2 gap-8">
     <div>
-      <Textarea name="name" label="Hello" attr={{ placeholder: "Enter your message" }} />
-      <Input type="email" name="fullName" label="Label config" attr={{ placeholder: "Enter your email" }} config={{ rounded: 'lg', labelStyle: {color: 'text-red-500'} }} />
+      <!--
+        
       <Select name="mysel1">
         <option value="">Select</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
       </Select>
-      <Fileinput name="myFile" attr={{ placeholder: "Select file" }} />
+       -->
     </div>
     <div>
-      <Textarea name="name" label="Hello" attr={{ placeholder: "Enter your message", disabled: true }} />
+      <!-- <Textarea name="name" label="Hello" attr={{ placeholder: "Enter your message", disabled: true }} />
       <Input type="email" name="fullName" label="Enter email" attr={{ placeholder: "Enter your email", disabled: true }} config={{ rounded: 'lg', labelConfig: {color: 'text-red-500'} }} />
       <Input type="email" name="fullName" label="Enter email" attr={{ placeholder: "Enter your email", readonly: true }} config={{ rounded: 'lg', labelConfig: {color: 'text-red-500'} }} />
       <Select name="mysel2" attr={{ placeholder: "Enter your email", readonly: true }}>
@@ -351,7 +412,7 @@
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
-      </Select>
+      </Select> -->
     </div>
   </div>
 

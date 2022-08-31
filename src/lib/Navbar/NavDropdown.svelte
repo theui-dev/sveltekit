@@ -1,9 +1,9 @@
 <script lang="ts">
   import { getContext } from "svelte"
   import { NAV } from "../index"
-  const { config } = getContext(NAV)
-  import { animate, token, rounded } from '../utility'
+  import { animate, rounded, token } from "theui"
   import { Svg } from "../index"
+  const { config } = getContext(NAV)
 
   export let label: string = ''
   export let megaMenu: boolean = false
@@ -26,7 +26,7 @@
   let commonCls = 'nav-dropdown'
   let defaultCls = ($$props.class||'pl-8 flex-col py-2 pr-2 bg-primary')
   let nonResCls = 'absolute pl-0 flex shadow-xl block w-80 max-h-[80vh] overflow-y-auto'
-  let resCls =  rounded(config?.rounded, 'bottom') + animate('fast', config?.animate) + ' shadow-none ' +
+  let resCls =  rounded(config?.rounded, 'bottom') + animate(config.animate) + ' shadow-none ' +
                 (config.responsive == 'xl' ? 'xl:absolute xl:pl-2 xl:flex xl:shadow-xl xl:block dark:xl:bg-tertiary ' :
                 config.responsive == 'md' ? 'md-collapse md:absolute md:pl-2 md:flex md:shadow-xl md:block dark:md:bg-tertiary ' :
                 config.responsive == 'lg' ? 'lg-collapse lg:absolute lg:pl-2 lg:flex lg:shadow-xl lg:block dark:lg:bg-tertiary ' : '') +

@@ -2,8 +2,7 @@
   import { getContext } from "svelte"
   import { TABLE } from "../index"
   const { config } = getContext(TABLE)
-
-  import Row from './TableRow.svelte'
+  import Row from "./TableRow.svelte"
 
   export let data     : (object | string[])[]|null	= null
   export let keys     : string[]|null               = null

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { getContext } from 'svelte'
-	import { TABS } from '../index'
-	import { fade } from 'svelte/transition'
-  import { token } from '../utility'
+	import { getContext } from "svelte"
+	import { TABS } from "../index"
+	import { fade } from "svelte/transition"
+  import { token } from "theui"
 
 	const panel = {}
 	const { registerPanel, selectedPanel, config } = getContext(TABS)

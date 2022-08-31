@@ -1,28 +1,32 @@
 <script lang="ts">
-  import { token } from "../utility"
-  import { getCheckRadioClass, getHeightFixClass } from './controller'
-  import { Label } from '../index'
-  import type { CHECKBOX_RADIO_CONFIG_TYPE } from "@theui/core/types"
+  import type { ROUNDED_TYPE } from "theui/types"
+  import { token      } from "theui"
+  import { getContext } from "svelte"
+  import { FORM       } from "../index"
+  import { Label      } from "../index"
+  import { getCheckRadioClass, getCheckRadioStateClass } from "./controller"
+  const ctx = getContext( FORM || {} )
 
+  export let size       : 'none' | 'sm' | 'md' | 'lg' = 'md'
+  export let id         : string = token()
   export let name       : string
-  export let text       : string = ''
-  export let helperText : string = null
+  export let label      : string = ''
+  export let helperText : string|undefined = undefined
   export let value      : any = ''
-  export let checked    : boolean = false
-  export let attr       : object = {}
-  export let config     : CHECKBOX_RADIO_CONFIG_TYPE = {}
 
-  let id = token()
+  let C = {}
+  Object.assign(C, ctx?.formConfig||{}, {size})
 </script>
 
-<div class="flex gap-2">
-  <div class="flex items-center {getHeightFixClass(config, helperText)}">
-    <input class={getCheckRadioClass(config, 'radio')} {id} {name} {...attr} {checked} type="radio" bind:value>
-  </div>
-  <div class="flex flex-col text-sm font-medium">
-    <label for={id}>
-      {@html text} {value}
-      {#if helperText}<p class="text-xs text-gray-500 font-normal">{@html helperText}</p>{/if}
-    </label>
-  </div>
-</div>
+<label for={id} class="flex gap-x-4 {getCheckRadioStateClass($$restProps)}" class:items-center={C?.size!='lg'} class:items-start={C?.size=='lg'}>
+  <input {...$$restProps} class={getCheckRadioClass(C, 'radio')} {id} {name} type="radio" bind:value>
+  {@html label}
+</label>
+
+{#if $$slots.helperText}
+  <slot name="helperText" />
+{/if}
+
+{#if !$$slots.helperText && helperText}
+  <p class="text-sm text-gray-500 font-normal {getCheckRadioStateClass($$restProps)}" class:pl-8={C?.size=='sm'} class:pl-10={C?.size=='md'} class:pl-12={C?.size=='lg'}>{@html helperText}</p>
+{/if}

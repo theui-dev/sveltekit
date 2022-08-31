@@ -3,10 +3,10 @@
 </script>
 
 <script lang="ts">
-	import { setContext, onDestroy } from 'svelte'
-	import { writable } from 'svelte/store'
-	import { token } from '../utility'
-	import type { TAB_CONFIG_TYPE } from '@theui/core/types'
+	import type { TAB_CONFIG_TYPE } from "theui/types"
+	import { setContext, onDestroy } from "svelte"
+	import { writable } from "svelte/store"
+  import { token } from "theui"
 
 	export let config		: TAB_CONFIG_TYPE = {}
 	export let id				: string = token()
