@@ -1,9 +1,9 @@
 <h1 align="center"> TheUI Sveltekit Components</h1>
 <div align="center">
 
-[![npm version](https://badgen.net/npm/v/theui-sveltekit?color=red)](https://www.npmjs.com/package/theui-sveltekit)
-[![npm downloads](https://badgen.net/npm/dt/theui-sveltekit)](https://www.npmjs.com/package/theui-sveltekit)
-[![license](https://badgen.net/npm/license/theui-sveltekit)](https://github.com/theui-dev/sveltekit/blob/master/license.md)
+[![npm version](https://badgen.net/npm/v/@theui/sveltekit-components?color=red)](https://www.npmjs.com/package/@theui/sveltekit-components)
+[![npm downloads](https://badgen.net/npm/dt/@theui/sveltekit-components)](https://www.npmjs.com/package/@theui/sveltekit-components)
+[![license](https://badgen.net/npm/license/flowbite-svelte)](https://github.com/themesberg/flowbite-svelte/blob/main/LICENSE)
 </div>
 
 <h2 align="center">A tool of the <b>Sveltekit ecosystem</b></h2>
@@ -12,7 +12,7 @@
   <img src="https://theui-beta.vercel.app/img/theui-sveltekit-components.svg" width="400px">
 </div>
 
-The **theui-sveltekit** is an official component library of [**TheUI**](https://www.theui.dev) for **Sveltekit**, designed on the top of TailwindCSS. It includes the power of SvelteKit and the features of the TailwindCSS together to make an awesome tool that speedup your development process.
+The **@theui/sveltekit-components** is an official component library of [**TheUI**](https://www.theui.dev) for **Sveltekit**, designed on the top of TailwindCSS. It includes the power of SvelteKit and the features of the TailwindCSS together to make an awesome tool that speedup your development process.
 
 <br>
 
@@ -37,10 +37,9 @@ The **theui-sveltekit** is an official component library of [**TheUI**](https://
   * Breadcrumb
   * Button
   * Button group
-  * Chips
   * Collapse
   * Container
-  * Dark/Light mode
+  * Dark-mode switch
   * Dropdown
   * Modal
   * Navbar
@@ -48,7 +47,6 @@ The **theui-sveltekit** is an official component library of [**TheUI**](https://
   * Offcanvas
   * Popup (Exit and Entry popup)
   * Progress bar
-  * SVG
   * Tabs and pills
   * Table
   * Tooltip
@@ -56,14 +54,11 @@ The **theui-sveltekit** is an official component library of [**TheUI**](https://
 <br>
 
 * Form Components
-  * Form
+  * Form input
   * Check-box
-  * Text editor
-  * Fieldset
-  * File input
-  * Input
-  * Label
+  * Input group
   * Radio button
+  * Range
   * Select
   * Textarea
   * Toggle
@@ -115,6 +110,9 @@ npx svelte-add@latest tailwindcss
 
 # Install node modules
 npm install
+
+# Install TheUI Sveltekit Component 
+npm i @theui/sveltekit-components
 ```
 
 <br>
@@ -122,7 +120,7 @@ npm install
 ### **2.2&nbsp;&nbsp; Add TheUI Components library**
 
 ```bash
-npm i theui-sveltekit
+npm i @theui/sveltekit-components
 ```
 
 <br>
@@ -137,9 +135,9 @@ Open TailwindCSS configuration file `tailwind.config.cjs` and update it with the
 const config = {
   content: [
     "./src/**/*.{html,js,svelte,ts}",
-    "./node_modules/theui-sveltekit/**/*.{html,js,svelte,ts}", // New line
+    "./node_modules/@theui/sveltekit-components/**/*.{html,js,svelte,ts}", // New line
   ],
-  presets: [require("theui/preset.cjs")], // New line
+  presets: [require("@theui/core/preset.cjs")], // New line
   darkMode: 'class',
   theme: {
     extend: {},
@@ -155,7 +153,7 @@ Open `__layout.svelte` and import the core style file `style.postcss` inside the
 
 ```html
 <script>
-  import "theui/style" // Add this line inside script tag
+  import '../../node_modules/@theui/core/style.postcss' // Add this line inside script tag
   import "../app.css"
 </script>
 ```
@@ -253,7 +251,7 @@ Congratulations! All the components using the brand color and the default text c
 
 ## **Contributions**
 
-Please let us know before starting work on any new features or bug. If you're interested in creating a new feature, create a feature request ticket in [Github Issues](https://github.com/theui-dev/sveltekit/issues). This allows for open discourse and may help prevent redudant work. This includes but is not limited to: creating new components, adding new utility features, or major alterations to existing work.
+Please let us know before starting work on any new features or bug. If you're interested in creating a new feature, create a feature request ticket in [Github Issues](https://github.com/theui-dev/sveltekit-components/issues). This allows for open discourse and may help prevent redudant work. This includes but is not limited to: creating new components, adding new utility features, or major alterations to existing work.
 
 <br>
 

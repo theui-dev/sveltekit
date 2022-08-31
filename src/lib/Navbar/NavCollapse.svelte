@@ -1,8 +1,8 @@
 <script lang="ts">
   import { getContext } from "svelte"
-  import { animate, rounded } from "theui"
   import { NAV } from "../index"
   const { config, id, mobileNav } = getContext(NAV)
+  import { animate, rounded } from '../utility'
 
   let commonCls = 'navbar-collapse flex-grow max-h-[80vh] z-[1]' + rounded(config?.rounded, 'bottom')
   let defaultCls = ($$props.class||'bg-primary')

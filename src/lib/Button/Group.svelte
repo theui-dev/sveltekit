@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { ROUNDED_TYPE } from "theui/types"
-  import { rounded } from "theui"
+  import type { ROUNDED_TYPE } from '@theui/core/types'
+  import { rounded } from "../utility"
   export let label: string = ''
   export let round: ROUNDED_TYPE = 'md'
   export let size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md'

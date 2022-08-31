@@ -1,7 +1,7 @@
 <script lang='ts'>
-	import type { ROUNDED_TYPE } from "theui/types"
-  import { rounded, token } from "theui"
-	import { Close, Svg } from "../index"
+	import type {ROUNDED_TYPE} from "@theui/core/types"
+	import { rounded, token }	from '../utility'
+	import { Close, Svg } from '../index'
 
 	export let dismissible: boolean = true
 	export let icon: boolean = true

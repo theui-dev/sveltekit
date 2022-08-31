@@ -1,7 +1,7 @@
 <script>
   import { ToggleTheme, Navbar, NavCollapse, NavDropdown, NavBrand, NavLink, NavContainer, NavToggle } from '$lib'
-  import "theui/style"
   import "../app.postcss";
+  import "../../node_modules/@theui/core/style.postcss";
 </script>
 
 <Navbar config={{ scrollBehavior: 'hideOnScrollDown'}} >

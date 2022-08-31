@@ -1,15 +1,15 @@
 <script lang='ts'>
-  import type { MODAL_CONFIG_TYPE } from "theui/types"
-  import { animate, rounded, token } from "theui"
-	import { modalIdStore } from "../Stores"
-  import { Close, Svg } from "../index"
+  import type { MODAL_CONFIG_TYPE } from '@theui/core/types'
+	import { modalIdStore } from '../Stores'
+  import { token, animate, rounded, getConfig } from '../utility'
+  import { Close, Svg } from '../index'
 
   export let config: MODAL_CONFIG_TYPE = {}
   export let id: string = token()
 	export let label: string = ''
 
   let C: MODAL_CONFIG_TYPE = {
-    animate         : 'fast',
+    animate         : true,
     backdrop        : true,
     bodyClasses     : ' ',
     closeBtn        : true,
@@ -44,7 +44,7 @@
 	}
 
   let modalBodyCls = () => {
-    return  'modal z-50' + modalSize() + modalPosition() + animateCls() + C?.bodyClasses + (C?.reset ? ' modal-reset' : '')
+    return  'modal' + modalSize() + modalPosition() + animateCls() + C?.bodyClasses + (C?.reset ? ' modal-reset' : '')
   }
 
   let modalSize = () => {
@@ -59,7 +59,7 @@
   }
 
   let animateCls = () => {
-    return animate(C?.animate)
+    return animate(C?.animateSpeed||'fast', C?.animate)
   }
 
   let animationCls = () => {

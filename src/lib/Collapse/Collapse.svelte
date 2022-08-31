@@ -1,15 +1,15 @@
 <script lang='ts'>
-  import type { COLLAPSE_CONFIG_TYPE } from "theui/types"
-  import { animate, token } from "theui"
-  import { collapseID } from "../Stores"
+  import type { COLLAPSE_CONFIG_TYPE } from '@theui/core/types'
+  import { collapseID } from '../Stores'
+  import { token, animate } from '../utility'
 
   export let config           : COLLAPSE_CONFIG_TYPE = {}
   export let id               : string = token()
   export let label            : string = ''
 
-  let C: COLLAPSE_CONFIG_TYPE = {animate : 'fast'}
+  let C: COLLAPSE_CONFIG_TYPE = {animate : true, animateSpeed : 'fast'}
   Object.assign(C, config)
-  let classes = animate(C?.animate)
+  let classes = animate(C?.animateSpeed, C?.animate)
 
   let toggleCollapse = (id: string) => {
     let element = document.getElementById(id)

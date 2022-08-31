@@ -1,4 +1,10 @@
-import type { ANIMATE_SPEED_TYPE, ROUNDED_TYPE, SHADOW_TYPE } from 'theui/types'
+import type { ANIMATE_SPEED_TYPE, ROUNDED_TYPE, SHADOW_TYPE } from '@theui/core/types'
+
+// =================================
+import { get } from 'svelte/store'
+import { THEUI_CONFIG } from './config'
+let CORE_CONFIG = get(THEUI_CONFIG)
+// =================
 
 let randomNum = (min: number = 10, max: number = 99): number => {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -12,7 +18,7 @@ let token = (prefix: string = "id"): string => {
 let animate = (speed: ANIMATE_SPEED_TYPE, animate: boolean, type: string = ''): string => {
   if(type == 'file'){
     return  (' ') + (
-      speed===0 ? 'file:tui-no-animate' :
+      !animate ? 'file:tui-no-animate' :
       'file:tui-animate file:transition-all file:ease-in-out ' +
       (speed=='faster' ? 'file:duration-100' : speed=='fast' ? 'file:duration-150' : 
       speed=='slow' ? 'file:duration-500' : speed=='slower' ? 'file:duration-700' : 'file:duration-300')
@@ -99,4 +105,8 @@ let shadow = (size?: SHADOW_TYPE|boolean) => {
           (size==='inner') ? 'shadow-inner' : '')
 }
 
-export { randomNum, token, animate, rounded, shadow }
+let getConfig = (config: string): any => {
+	return CORE_CONFIG[config]||false
+}
+
+export { randomNum, token, animate, rounded, shadow, getConfig }

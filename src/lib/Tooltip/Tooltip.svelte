@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { TOOLTIP_CONFIG_TYPE } from 'theui/types'
-  import { animate, rounded } from "theui"
+  import type { TOOLTIP_CONFIG_TYPE } from '@theui/core/types'
+  import { animate, rounded } from '../utility'
 
   export let text: string = ''
   export let config: TOOLTIP_CONFIG_TYPE = {}
 
   let C: TOOLTIP_CONFIG_TYPE = {
-    animate : 'normal',
+    animate : true,
     bgColor: '#1F2937',
     inline: true,
     reset : false
@@ -14,14 +14,14 @@
   Object.assign(C, config)
 
   let containerCls = () => {
-    return  'tooltip-container relative ' + (C.inline ? 'inline-block ' : '') + (C?.animation ? 'fade' : '')
+    return  'tooltip-container relative ' + (C.inline ? 'inline-block ' : '') + (C?.animation||'fade')
   }
 
   let tooltipCls = () => {
     let position = C?.position || 'top'
-    let cls = ' tooltip z-[60] absolute min-w-[128px] max-w-[280px] ' +
+    let cls = ' tooltip absolute min-w-[128px] max-w-[280px] ' +
     (C.reset ? '' : 'text-sm text-center ') +
-    animate(C.animate) +
+    animate(C?.animateSpeed||'normal', C.animate) +
     (position === 'left' ? ' tooltip-left' : position === 'right' ? ' tooltip-right' : position === 'bottom' ?   ' tooltip-bottom' : ' tooltip-top') + rounded(C?.rounded||'sm')
     return cls
   }

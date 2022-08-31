@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { fade, fly } from "svelte/transition"
-  import { notifications, removeNotification, getClasses } from "./Store"
-  import type { ROUNDED_TYPE } from "theui/types"
+  import { fade, fly } from 'svelte/transition'
+  import { notifications, removeNotification, getClasses } from './Store'
+  import type { ROUNDED_TYPE } from '@theui/core/types'
   
   export let position : 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left' = 'top-right'
   export let animate: boolean = true
 </script>
 
 {#if $notifications.length}
-<ul class='notifications z-[70] {position}'>
+<ul class='notifications {position}'>
   {#each $notifications as notification}
   <li class="notification">
     {#if animate}

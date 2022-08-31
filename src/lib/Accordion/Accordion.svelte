@@ -1,15 +1,15 @@
 <script lang='ts'>
-  import type { ACCORDION_CONFIG_TYPE } from "theui/types"
-  import { animate, rounded, token } from "theui"
-  // import { animate, rounded, token } from "../utility"
-  import { activeAccordionID } from "../Stores"
+  import type { ACCORDION_CONFIG_TYPE } from '@theui/core/types'
+  import { animate, rounded, token } from '../utility'
+  import { activeAccordionID } from '../Stores'
 
   export let data: {title: string, content: string}|null = null
   export let isOpen: boolean = false
   export let config: ACCORDION_CONFIG_TYPE = {}
 
   let C: ACCORDION_CONFIG_TYPE = {
-    animate               : 'fast',
+    animate               : true,
+    animateSpeed          : 'fast',
     containerClass        : 'mb-4',
     containerActiveClass  : 'mb-4',
     contentActiveClass    : {
@@ -67,16 +67,16 @@
   let getTitleClasses = (active_ID) => {
     let cls = 'accordion-title flex justify-between items-center w-full '
     if(active_ID==id){
-      return cls + rounded(C?.rounded||'md', 'top') + ' ' + (C?.titleActiveClass[C?.variant] || C?.titleActiveClass || '')
+      return cls + rounded(C?.rounded, 'top') + ' ' + (C?.titleActiveClass[C?.variant] || C?.titleActiveClass || '')
     }else{
-      return cls + (C?.variant == 'default' ? rounded(C?.rounded||'md') : rounded(C?.rounded||'md', 'top')) + ' ' +
+      return cls + (C?.variant == 'default' ? rounded(C?.rounded) : rounded(C?.rounded, 'top')) + ' ' +
               (C?.titleClass[C?.variant] || C?.titleClass || '')
     }
     return ''
   }
 
   let getContentClasses = (active_ID) => {
-    let cls = 'accordion-content h-full ' + (C?.variant == 'default' ? rounded(C?.rounded||'md', 'bottom') : '') + ' '
+    let cls = 'accordion-content h-full ' + (C?.variant == 'default' ? rounded(C?.rounded, 'bottom') : '') + ' '
     if(active_ID==id){
       return cls + (C?.contentActiveClass[C?.variant] || C?.contentActiveClass || '') 
     }else{
@@ -108,7 +108,7 @@
 
   <div
     {id}
-    class='accordion-body{animate(C?.animate)}'
+    class='accordion-body{animate(C?.animateSpeed, C?.animate)}'
     aria-labelledby='{id}Heading'
     aria-hidden={$activeAccordionID!=id}
     class:accordion-close={$activeAccordionID!=id}

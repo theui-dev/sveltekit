@@ -1,6 +1,6 @@
 <script lang='ts'>
-  import type { ROUNDED_TYPE, BREADCRUMB_DATA_TYPE } from "theui/types"
-  import { rounded } from "theui"
+  import type { ROUNDED_TYPE, BREADCRUMB_DATA_TYPE } from '@theui/core/types'
+  import {rounded} from '../utility'
 
   export let activeColor : string = 'text-gray-500'
   export let data : Array<BREADCRUMB_DATA_TYPE> = []

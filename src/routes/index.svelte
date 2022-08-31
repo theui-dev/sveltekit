@@ -1,5 +1,5 @@
 <script>
-  import { Button, Dropdown, Toggle, Chips } from '$lib'
+  import { Button, Dropdown } from '$lib'
 
   let data = [
     {
@@ -37,19 +37,7 @@
     <Button slot="label" label="Dropdown Fade" />
   </Dropdown>
 </div>
-<br>
-<br>
-<Toggle label="Proin magna. Maecenas vestibulum mollis diam. Proin magna. Maecenas vestibulum mollis diamProin magna. Maecenas vestibulum mollis diamProin magna. Maecenas vestibulum mollis diamProin magna. Maecenas vestibulum mollis diamProin magna. Maecenas vestibulum mollis diamProin magna. Maecenas vestibulum mollis diam"/>
-<br>
-<br>
-<Chips/>
-<br>
-<Chips imgUrl="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg"/>
-<br>
-<Chips round="none" imgUrl="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" />
-<br>
-<Chips round="none" imgUrl="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" size='lg' />
-<br>
+
 
 <p class="pt-24 px-8 min-h-screen">
   Proin magna. Maecenas vestibulum mollis diam. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam adipiscing. Proin magna. Maecenas vestibulum mollis diam. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam adipiscing. Proin magna. Maecenas vestibulum mollis diam. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam adipiscing. Proin magna. Maecenas vestibulum mollis diam. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam adipiscing. Proin magna. Maecenas vestibulum mollis diam. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam adipiscing. Proin magna. Maecenas vestibulum mollis diam. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam adipiscing.

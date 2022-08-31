@@ -1,14 +1,14 @@
 <script lang='ts'>
-  import type { OFFCANVAS_CONFIG_TYPE } from "theui/types"
-  import { animate, token } from "theui"
-	import { Close, Svg } from "../index"
+  import type { OFFCANVAS_CONFIG_TYPE } from '@theui/core/types'
+  import { token, animate } from '../utility'
+	import { Close, Svg } from '../index'
 
   export let config: OFFCANVAS_CONFIG_TYPE = {}
   export let id: string = token()
   export let label: string = ''
 
   let C: OFFCANVAS_CONFIG_TYPE = {
-    animate : 'fast',
+    animate : true,
     backdrop: true,
     closeOnEsc: true,
     staticBackdrop: false,
@@ -31,7 +31,7 @@
 	}
 
   let animateCls = () => {
-    return animate(C.animate)
+    return animate(C?.animateSpeed||'fast', C.animate)
   }
 
   let positionCls = (position: string) => {
@@ -48,7 +48,7 @@
 {/if}
 
 {#if $$slots.body}
-  <div {id} class='offcanvas fixed inset-0 z-40 {animateCls()} {positionCls(C?.position||'left')}' role='dialog' class:animate={C.animate}>
+  <div {id} class='offcanvas fixed inset-0 {animateCls()} {positionCls(C?.position||'left')}' role='dialog' class:animate={C.animate}>
 
     {#if C.backdrop}
     <div class='backdrop fixed inset-0 bg-black z-[-1] {animateCls()}'

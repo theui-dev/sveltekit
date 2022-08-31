@@ -1,12 +1,8 @@
 # Changelog
 
-> Only important changes are listed here.
+> Only the minor but important in-house versions will be added here before the release of v1.
 
 <br>
-
-## v1.0.0-beta.10 (2022-08-31)
-- Chips, Toggle input added
-- Code updates and bug fixes
 
 ## v0.32.0 (2022-08-15)
 - Mobile nav fix
@@ -109,12 +105,12 @@
 ## v0.13.0 (2022-06-13)
 - Updated to Tailwind CSS v3.1.2
 - CSS Color vars renamed
-- "theui" updated to v0.15.1
+- @theui/core updated to v0.15.1
 
 ## v0.12.0 (2022-06-07)
 - Unused Config vars removed
 - Default config values moved to under the components functions and files
-- theui" updated to v0.12.2 with theming presets
+- @theui/core updated to v0.12.2 with theming presets
 
 ## v0.10.10 (2022-05-29)
 - scrollTheme added to NAV_CONFIG
