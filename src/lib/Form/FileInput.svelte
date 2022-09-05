@@ -28,7 +28,6 @@
       return rounded(C.rounded) + roundedFileBtn(C.rounded)
     }
   }
-  console.table(C)
 </script>
 
 <div class={getContainerClass(C)}>
