@@ -31,11 +31,6 @@
         <NavLink href="/all">All</NavLink>
         <NavLink href="/table">Table</NavLink>
       </NavDropdown>
-      <NavDropdown label="Dropdown right" align="right" animation="slide-up">
-        <NavLink href="/">Home</NavLink>
-        <NavLink href="/all">All</NavLink>
-        <NavLink href="/table">Table</NavLink>
-      </NavDropdown>
       <NavDropdown label="Dropdown fade" align="right" animation='fade'>
         <NavLink href="/">Home</NavLink>
         <NavLink href="/all">All</NavLink>

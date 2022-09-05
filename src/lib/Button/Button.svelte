@@ -9,7 +9,7 @@
 
   export let href         : string = undefined
   export let externalIcon : boolean = true
-  export let prefetch     : boolean = true
+  export let prefetch     : ''|'off' = ''
 
   let C = {animate : 'fast', outline : false, shadow : 'none'}
   Object.assign(C, config)
@@ -37,7 +37,7 @@
 
 {#if href}
   <a {href} {...$$restProps} class={$$props.class ? $$props.class : classes}
-    sveltekit:prefetch={prefetch} on:blur on:click on:focus on:dblclick
+    data-sveltekit-prefetch={prefetch} on:blur on:click on:focus on:dblclick
     aria-label={label} aria-disabled={$$restProps.disabled && $$restProps.disabled==true}>
     <slot name='beforeLabel'></slot>
     <slot name='label'>{label}</slot>

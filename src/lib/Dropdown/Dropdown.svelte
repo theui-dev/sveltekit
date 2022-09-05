@@ -111,7 +111,7 @@
 							{#if item.type == 'header'}
 								<p class={config?.headerClasses||'p-4 font-semibold text-xs opacity-75 uppercase'}>{item.text}</p>
 							{:else}
-								<a href={item.url} class={itemCls(item)}>{item.text}</a>
+								<a href={item.url} class={itemCls(item)} data-sveltekit-prefetch={item?.prefetch!='off'}>{item.text}</a>
 							{/if}
 						{/if}
 					</li>

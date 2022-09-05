@@ -5,7 +5,7 @@
   const { config, id, mobileNav } = getContext(NAV)
 
   export let href     : string = null
-  export let prefetch : boolean = true
+  export let prefetch : ''|'off' = ''
   export let active   : string|boolean = false
 
   let linkCls = 'nav-link flex items-center ' + ($$props.class ? $$props.class : (active ? config.activeLinkStyle : config.linkStyle)) + rounded(config?.rounded) + animate(config?.animate)
@@ -20,7 +20,7 @@
 </script>
 
 {#if href}
-  <a {href} class={linkCls} sveltekit:prefetch={prefetch} on:click={()=>closeMobileNav()}><slot/></a>
+  <a {href} class={linkCls} data-sveltekit-prefetch={prefetch} on:click={()=>closeMobileNav()}><slot/></a>
 {:else}
   <span class="cursor-pointer {linkCls}"><slot/></span>
 {/if}
