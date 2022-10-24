@@ -5,7 +5,7 @@
   const { config, id, mobileNav } = getContext(NAV)
 
   export let href     : string = null
-  export let prefetch : ''|'off' = ''
+  export let prefetch : boolean = ""
   export let active   : string|boolean = false
 
   let linkCls = 'nav-link flex items-center ' + ($$props.class ? $$props.class : (active ? config.activeLinkStyle : config.linkStyle)) + rounded(config?.rounded) + animate(config?.animate)

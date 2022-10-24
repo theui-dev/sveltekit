@@ -14,12 +14,12 @@
 
 	let C: TAB_CONFIG_TYPE = {
 		animate						: true,
-		activeTabClasses  : {
+		activeTabClass  : {
 			pills : 'bg-brand text-white',
 			tabs : 'border-0 border-b-2 border-brand text-brand bg-primary',
 		},
 		reset             : false,
-		tabClasses        : {
+		tabClass        : {
 			pills : 'bg-secondary hover:bg-brand',
 			tabs  : 'border-0 border-b-2 border-secondary bg-primary',
 		}

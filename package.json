@@ -1,6 +1,6 @@
 {
   "name": "theui-sveltekit",
-  "version": "1.0.0-beta.14",
+  "version": "1.0.0-beta.22",
   "description": "This is an official component library of The UI for Sveltekit. The components designed on the top of TailwindCSS with custom theming. The components are accessible out of the box.",
   "author": {
     "name": "M B Parvez",
@@ -25,26 +25,26 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
-    "@sveltejs/package": "^1.0.0-next.3",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
     "postcss-load-config": "^4.0.1",
     "svelte": "^3.44.0",
     "svelte-check": "^2.7.1",
-    "svelte-preprocess": "^4.10.7",
-    "tailwindcss": "^3.1.5",
+    "svelte-preprocess": "^4.10.6",
+    "tailwindcss": "^3.1.2",
     "tslib": "^2.3.1",
     "typescript": "^4.7.4",
-    "vite": "^3.0.9"
+    "vite": "^3.1.0-beta.1"
   },
   "type": "module",
   "dependencies": {
+    "@sveltejs/package": "^1.0.0-next.3",
     "@tiptap/core": "^2.0.0-beta.182",
     "@tiptap/extension-placeholder": "^2.0.0-beta.53",
     "@tiptap/extension-underline": "^2.0.0-beta.25",
     "@tiptap/starter-kit": "^2.0.0-beta.191",
-    "svelte2tsx": "^0.5.16",
-    "theui": "^1.0.0-beta.9"
+    "svelte2tsx": "^0.5.13",
+    "theui": "^1.0.0-beta.12"
   },
   "keywords": [
     "sveltekit-components",

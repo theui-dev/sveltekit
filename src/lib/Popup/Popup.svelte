@@ -91,7 +91,7 @@
 
 {#if popup}
 <div class="popup !z-[80] fixed inset-0 overflow-y-hidden {C.containerClass}" role='dialog'>
-  {#if C.backdrop}<div class="back-drop fixed inset-0 {C.backDropClass}" on:click={()=>handleBackbrop()}></div>{/if}
+  {#if C.backdrop}<div class="back-drop fixed inset-0 {C.backDropClass} z-[-1]" on:click={()=>handleBackbrop()}></div>{/if}
   <div class="content overflow-y-auto relative {C.contentClass} {rounded(C.rounded)} ">
     <slot />
   </div>

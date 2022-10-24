@@ -9,7 +9,7 @@
 
   let getClass = (active: boolean) => {
     let cls = (config.reset ? '' : ' px-8 py-3 text-center focus-within:outline-none font-medium ') + (variant == "pills" ? ' tab-pill ' : ' ')
-    cls +=  active ? (config?.activeTabClasses[variant]||config?.activeTabClasses) : (config?.tabClasses[variant]||config?.tabClasses)
+    cls +=  active ? (config?.activeTabClass[variant]||config?.activeTabClass) : (config?.tabClass[variant]||config?.tabClass)
     cls +=  shadow(config?.shadow||'lg') + rounded(config?.rounded||'md', (variant == 'tabs' ? 'top' : 'all'))
     return cls
   }

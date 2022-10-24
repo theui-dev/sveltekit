@@ -14,7 +14,7 @@
       <NavLink href="/">Home</NavLink>
       <NavLink href="/all">All</NavLink>
       <NavLink href="/table">Table</NavLink>
-      <NavDropdown label="Dropdown left">
+      <NavDropdown label="Dropdown left" megaMenu={true}>
         <NavLink href="/">Home</NavLink>
         <NavLink href="/all">All</NavLink>
         <NavLink href="/table">Table</NavLink>

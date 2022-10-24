@@ -9,7 +9,7 @@
 
   export let href         : string = undefined
   export let externalIcon : boolean = true
-  export let prefetch     : ''|'off' = ''
+  export let prefetch     : boolean = ""
 
   let C = {animate : 'fast', outline : false, shadow : 'none'}
   Object.assign(C, config)

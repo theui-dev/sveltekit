@@ -5,15 +5,16 @@
 
   let focusable : boolean = true
   let viewBox : string = '0 0 16 16'
+  let cls = "svg-icon shrink-0 " + {$$props?.class ? $$props.class : (stroke ? 'stroke-current fill-transparent' : 'fill-current')}
 </script>
 
 <svg
   {focusable}
   {viewBox}
   width='{size}rem' height='{size}rem'
-  class="svg-icon {$$props.class||( (stroke ? 'stroke-current fill-transparent' : 'fill-current') + ' shrink-0')}"
+  class={cls}
   {...$$restProps}
-  class:strock-icon={stroke}
+  class:stroke-icon={stroke}
   xmlns='http://www.w3.org/2000/svg'
   xmlns:xlink='http://www.w3.org/1999/xlink'>
   <slot />
